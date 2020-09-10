@@ -1,0 +1,43 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Hola!"
+theme="codex"
+paginate = 2
+Copyright = "RDG 2020"
+canonifyurls = true
+
+[params]
+twitter = "https://twitter.com/ruydg"
+github = "https://github.com/rodogi"
+scholar = "https://scholar.google.com/citations?user=Qe5ab4gAAAAJ&hl=en"
+
+iconOrder = ["twitter", "github", "scholar"]
+
+[[menu.main]]  # here are the buttons on the menu
+name = "Home" # Button will display as "Home"
+weight = 100 # the weight decides the position of the button (higher or lower)
+identifier = "home"
+pre = "<br />"
+url = "/"
+[[menu.main]]
+name = "Résumé"
+identifier = "resume" # this page will refer to a markdown file named "blog" in the content folder
+pre = "<br />"
+url = "/resume/resume.pdf"
+weight = 40
+[[menu.main]]
+name = "Research"
+weight = 0
+identifier = "research" # this button will refer to a markdown file named "contact" in the content folder
+pre = "<br />"
+url = "/research"
+[[menu.main]]
+name = "Blog"
+identifier = "blog" # this page will refer to a markdown file named "blog" in the content folder
+pre = "<br />"
+url = "/post"
+weight = 40
+[sitemap]
+ChangeFreq = ""
+Filename = "sitemap.xml"
+Priority = "-1"

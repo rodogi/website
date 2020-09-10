@@ -1,0 +1,9 @@
+[submodule "themes/resume"]
+	path = themes/resume
+	url = https://github.com/eddiewebb/hugo-resume
+[submodule "themes/casper"]
+	path = themes/casper
+	url = https://github.com/vjeantet/hugo-theme-casper
+[submodule "themes/codex"]
+	path = themes/codex
+	url = https://github.com/jakewies/hugo-theme-codex
