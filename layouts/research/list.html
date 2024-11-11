@@ -1,0 +1,45 @@
+{{ define "styles" }}
+    {{ $.Scratch.Set "style_opts" (dict "src" "scss/pages/research.scss" "dest" "css/research.css") }}
+{{ end }}
+
+{{ define "main" }}
+<div class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ if .Description }}
+        <div class="post-description">{{ .Description }}</div>
+        {{ end }}
+    </header>
+
+    {{ if .Content }}
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    {{ if .Pages }}
+    <div class="research-list">
+        {{ range .Pages.ByDate.Reverse }}
+        <article class="research-item">
+            <h2 class="research-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            {{ if .Params.publication }}
+            <div class="publication">{{ .Params.publication }}</div>
+            {{ end }}
+            {{ if .Description }}
+            <div class="research-description">{{ .Description }}</div>
+            {{ end }}
+            {{ if .Params.tags }}
+            <div class="research-tags">
+                {{ range .Params.tags }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </article>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}
