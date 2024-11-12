@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="research-article">
+    <div class="container">
+        <header class="article-header">
+            <h1>{{ .Title }}</h1>
+            <div class="article-meta">
+                {{ with .Description }}
+                    <p class="description">{{ . }}</p>
+                {{ end }}
+                <div class="tags">
+                    {{ range .Params.tags }}
+                        <span class="tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </header>
+
+        <div class="article-content">
+            {{ .Content }}
+        </div>
+
+        <nav class="article-nav">
+            {{ with .PrevInSection }}
+                <a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>
+            {{ end }}
+            {{ with .NextInSection }}
+                <a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>
+            {{ end }}
+        </nav>
+    </div>
+</article>
+{{ end }}

@@ -2,47 +2,34 @@ baseURL = "https://rodogi.github.io"
 languageCode = "en-us"
 title = "Rodrigo Dorantes Gilardi"
 theme = "codex"
-paginate = 2
-Copyright = "RDG 2020"
-canonifyurls = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[logger]
+  level = "WARN"
+  ignoreLogs = ['warning-goldmark-raw-html']
 
 [params]
-twitter = "https://twitter.com/ruydg"
-github = "https://github.com/rodogi"
-scholar = "https://scholar.google.com/citations?user=Qe5ab4gAAAAJ&hl=en"
-iconOrder = ["twitter", "github", "scholar"]
+  twitter = "https://twitter.com/ruydg"
+  github = "https://github.com/rodogi"
+  scholar = "https://scholar.google.com/citations?user=Qe5ab4gAAAAJ&hl=en"
+  iconOrder = ["twitter", "github", "scholar"]
 
-# Menu configuration - notice the different formatting
 [menu]
   [[menu.main]]
   name = "Home"
-  weight = 100
-  identifier = "home"
-  pre = "<br />"
   url = "/"
+  weight = 1
 
   [[menu.main]]
   name = "Research"
-  weight = 0
-  identifier = "research"
-  pre = "<br />"
   url = "/research"
+  weight = 2
 
   [[menu.main]]
-  name = "Blog"
-  weight = 40
-  identifier = "blog"
-  pre = "<br />"
-  url = "/post"
-
-  [[menu.main]]
-  name = "Résumé"
-  weight = 40
-  identifier = "resume"
-  pre = "<br />"
+  name = "CV"
   url = "/resume/resume.pdf"
-
-[sitemap]
-ChangeFreq = ""
-Filename = "sitemap.xml"
-Priority = "-1"
+  weight = 3

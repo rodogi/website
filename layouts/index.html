@@ -1,24 +1,46 @@
-{{ define "styles" }}
-    {{ $.Scratch.Set "style_opts" (dict "src" "scss/pages/about.scss" "dest" "css/about.css") }}
-{{ end }}
-
 {{ define "main" }}
+<div class="container">
+    <div class="splash">
+        <div class="profile-image">
+            <img src="/images/profile_updated.jpg" alt="Rodrigo Dorantes Gilardi" width="200" height="200">
+        </div>
+        <h1>{{ .Params.heading }}</h1>
+        <p class="subheading">{{ .Params.subheading }}</p>
+        {{ if .Params.handle }}
+        <p class="handle">{{ .Params.handle }}</p>
+        {{ end }}
+    </div>
 
-<div class="splash-container">
-<img src="images/profile.png" alt="That is me" width="200" height="200">
-  <div class="splash">
-    
-    <h2>{{ .Params.heading }}<span class="fancy">.</span></h2>
-    {{ if isset .Params "handle" }}
-    <span class="handle">@{{ .Params.handle }}</span>
-    {{ end }}
-    <p>
-      {{ .Params.subheading }}
-    </p>
-    <!-- Replace MEEEEE -->
+    <div class="content-section">
+        {{ if .Params.introduction }}
+        <div class="introduction">
+            <p>{{ .Params.introduction | markdownify }}</p>
+        </div>
+        {{ end }}
 
-    {{ partial "social-icons.html" .}}
-  </div>
+        {{ if .Params.interests }}
+        <div class="interests">
+            <h2>Key Interests</h2>
+            <div class="interests-list">
+                {{ range .Params.interests }}
+                <span class="interest-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        {{ if .Params.highlights }}
+        <div class="highlights">
+            <h2>Highlights</h2>
+            <ul class="highlights-list">
+                {{ range .Params.highlights }}
+                <li>
+                    <strong>{{ .title }}:</strong> {{ .content }}
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
 </div>
-
 {{ end }}
