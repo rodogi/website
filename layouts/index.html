@@ -31,11 +31,11 @@
 
         {{ if .Params.highlights }}
         <div class="highlights">
-            <h2>Highlights</h2>
+            <h2>External links</h2>
             <ul class="highlights-list">
                 {{ range .Params.highlights }}
                 <li>
-                    <strong>{{ .title }}:</strong> {{ .content }}
+                    {{ .title }}: {{ .content | markdownify}}
                 </li>
                 {{ end }}
             </ul>
