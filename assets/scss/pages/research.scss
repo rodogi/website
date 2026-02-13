@@ -1,52 +1,52 @@
 .research-list {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .research-item {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-    
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #ddd);
+
     &:last-child {
         border-bottom: none;
     }
 }
 
 .research-title {
-    margin-bottom: 1rem;
-    
+    margin-bottom: 0.5rem;
+
     a {
-        color: var(--color-text);
+        color: var(--primary-color, #9b6dff);
         text-decoration: none;
-        
+
         &:hover {
-            color: var(--color-primary);
+            text-decoration: underline;
         }
     }
 }
 
 .publication {
     font-style: italic;
-    color: #64748b;
-    margin-bottom: 1rem;
+    color: var(--muted-color, #777);
+    margin-bottom: 0.5rem;
 }
 
 .research-description {
-    margin: 1rem 0;
+    margin: 0.75rem 0;
     line-height: 1.6;
 }
 
 .research-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+
     .tag {
-        background: #f1f5f9;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        color: #475569;
+        background: rgba(155, 109, 255, 0.08);
+        padding: 0.15rem 0.5rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        color: var(--muted-color, #777);
     }
 }

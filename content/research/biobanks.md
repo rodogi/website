@@ -3,11 +3,13 @@ title: "Biobanks"
 description: "Quantifying the impact of biobanks in biomedicine"
 tags: ["Social", "Biobank Impact Factor", "NLP"]
 date: 2024-01-15
-image: "/images/co_citation_fancy_intense.png"  # Add your image here
+image: "/images/co_citation_fancy_intense.png"
 ---
 
-Scientific research is increasingly shaped by the collective efforts of vast repositories of health data and biological samples, which together form the foundation of biobanks. These biobanks serve as essential resources, supplying vast datasets for groundbreaking medical research aimed at understanding and treating complex diseases. In our work, we’ve explored over 2,600 biobanks and cataloged their presence across scientific literature, patents, clinical trials, grants, and policy documents to better understand the broad impact of these repositories. By tracing mentions and references across almost 230,000 documents, we’ve uncovered unique insights into the areas of science and innovation most frequently propelled by biobank data.
+Biobanks—large repositories of biological samples and associated health data—are fundamental to modern biomedical research, yet their contributions are poorly captured by traditional metrics. In this work, we systematically traced over 2,600 biobanks across nearly 230,000 documents, including scientific publications, patents, clinical trials, grants, and policy reports, to map the full scope of their influence on science and public health.
 
-To deepen this understanding, we developed a metric, the Biobank Impact Factor (BIF), which moves beyond traditional measures of influence. While citation numbers alone often fail to capture the true reach of biobanks, BIF integrates additional dimensions—such as diversity of diseases studied, the extent of public health applications, and the intensity of collaborative efforts—to provide a fuller picture of each biobank’s influence. We’ve found that the openness of biobanks to external collaborators, as well as the depth and quality of their datasets, particularly those linked to comprehensive medical records, strongly aligns with greater scientific significance. By making these insights available through an open-access dashboard, our work offers researchers and decision-makers a tool to engage with biobank data more effectively, enhancing the collaborative and transformative potential of biobank-supported research.
+We introduced the Biobank Impact Factor (BIF), a multidimensional metric that goes beyond citation counts to quantify a biobank’s reach. The BIF integrates factors such as the diversity of diseases studied, translational footprint, and intensity of collaborative use. Our analysis shows that biobanks offering open access to external researchers and maintaining rich, longitudinal datasets linked to medical records tend to have significantly greater scientific impact.
 
-Check out the pre-print [here](https://arxiv.org/abs/2407.01248).
+These findings, along with an open-access interactive dashboard, provide researchers and policymakers with a tool to evaluate and compare biobank contributions more effectively.
+
+Published in [PNAS, 2025](https://www.pnas.org/doi/epdf/10.1073/pnas.2427157122).

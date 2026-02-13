@@ -1,67 +1,52 @@
-+++
-title = "What cities appear more often in El País articles?"
-author = ["Rodrigo Dorantes-Gilardi"]
-date = 2019-07-22T00:00:00-05:00
-draft = false
-toc = true
-+++
+---
+title: "What cities appear most often in El País articles?"
+author: ["Rodrigo Dorantes-Gilardi"]
+date: 2019-07-22
+description: "Scraping a year of El País front pages to find which cities dominate the Latin American edition."
+toc: true
+---
 
-## Introduction {#introduction}
+## Introduction
 
-El País is one of the most well-known newspapers in the Hispanic world. Personally, it is one of
-my favorites as its American (Latin American) version has news from all over the region (I live in
-Mexico).
+El País is one of the most widely read newspapers in the Spanish-speaking world. As a regular reader of its Latin American edition, I noticed that coverage seemed unevenly distributed—most front-page stories appeared to come from Mexico.
 
-I've been an \`El País' reader for a few years now, and I can't help but notice that the Latin
-American version is not that well balanced. Indeed, most of the articles I see on their front page
-come from Mexico.
+To test this impression, I scraped every front-page article from 2018 using Python’s `requests` and `beautifulsoup` libraries.
 
-In order to get the countries of the main articles, I took all the articles on the front-page from
-2018 using python modules `requests` and `beautifulsoup`.
+## Results
 
+The [El País](https://elpais.com/elpais/portada%5Famerica.html) front page is structured in HTML with articles enclosed in `<article>` tags. Each article’s title lives under the class `"articulo-titulo"`, and its dateline under `"articulo-localizacion"`.
 
-## Results {#results}
-
-[El País](https://elpais.com/elpais/portada%5Famerica.html) front-page website is written in `html` and has its articles separated by `<article>` and
-`</article>` tags. Inside these tags you can find the title of the article with the class
-`"articulo-titulo"` and the location of the article with class `"articulo-localizacion"` inside a
-`dev` tag.
-
-After getting the text from the article with:
+Here’s the basic scraping setup:
 
 ```python
 import requests
 from bs4 import BeautifulSoup
 
-r = requests.get('https://elpais.com/elpais/portada_america.html')
-soup = BeautifulSoup(r,text, 'html')
+r = requests.get("https://elpais.com/elpais/portada_america.html")
+soup = BeautifulSoup(r.text, "html.parser")
 
-articles = soup.find_all('article', attrs={'class': 'articulo'})
-loc = soup.find_all('span', attrs={'class': 'articulo-localizacion'})
+articles = soup.find_all("article", attrs={"class": "articulo"})
+loc = soup.find_all("span", attrs={"class": "articulo-localizacion"})
 ```
 
-Using `calendar` and doing the proper formatting for months and days, it's easy to parse through a
-year of front-page articles. The resulting 33,285 articles contain:
+By iterating through every day of 2018, I collected 33,285 articles:
 
-1.  17,368 **not found** locations
-2.  703 cities
-3.  52 cities with more than 20 appearances in an article (See [1](#orgd4e05ef))
-4.  The most frequent city is Madrid (3327) following by Mexico City (2191)
+1. 17,368 had **no location** identified
+2. 703 distinct cities appeared
+3. 52 cities appeared more than 20 times
+4. **Madrid** led with 3,327 mentions, followed by **Mexico City** with 2,191
 
 <a id="orgd4e05ef"></a>
 
-{{< figure src="/images/freq_city.png" caption="Figure 1: Frequency of cities with more than 20 appearances in El País front-page, Latin American version." >}}
+{{< figure src="/images/freq_city.png" caption="Figure 1: Frequency of cities with more than 20 appearances on the El País front page (Latin American edition, 2018)." >}}
 
+## Conclusion
 
-## Conclusion {#conclusion}
+Despite being the Latin American edition:
 
-Even if the version I scanned was the Latin American version,
+1. **Madrid** still has the most front-page appearances
+2. Mexico City is second
+3. Two U.S. cities rank third and fourth
+4. Buenos Aires and Bogotá follow
 
-1.  **Madrid** still upholds the most appearances
-2.  Mexico City is second place
-3.  Two U.S. cities are third and fourth
-4.  Followed by Buenos Aires and Bogotá
-
-Overall, Latin American cities seem to be **over-represented** (world-wide-like), but **Mexico City** is
-the only Latin American city that appears to be preferred by the editors. Nonetheless, the journal is Spaniard and
-**Spanish news** seem to have the most articles even in the Latin American version of the newspaper.
+Latin American cities are well represented overall, but the newspaper’s Spanish roots mean that Spanish news dominates—even in the edition aimed at Latin America.

@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="container">
+    <article class="research-article">
+        <div class="article-header">
+            <h1>{{ .Title }}</h1>
+            <div class="description">{{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} · {{ delimit . ", " }}{{ end }}</div>
+        </div>
+        <div class="article-content">
+            {{ .Content }}
+        </div>
+        <div class="article-nav">
+            {{ with .PrevInSection }}
+                <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+            {{ else }}
+                <span></span>
+            {{ end }}
+            {{ with .NextInSection }}
+                <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+            {{ end }}
+        </div>
+    </article>
+</div>
+{{ end }}

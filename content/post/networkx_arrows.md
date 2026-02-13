@@ -1,35 +1,30 @@
-+++
-title = "Adding arrows to networkx"
-author = ["Rodrigo Dorantes-Gilardi"]
-date = 2018-05-29T00:00:00-05:00
-draft = false
-+++
+---
+title: "Adding arrows to networkx"
+author: ["Rodrigo Dorantes-Gilardi"]
+date: 2018-05-29
+description: "Contributing proper arrow rendering for directed networks to the networkx library."
+---
 
-## No arrows in networkx {#no-arrows-in-networkx}
+## The problem
 
-Believe it or not, the popular network package `networkx` didn't have arrows to draw directed
-networks. Instead, it used some ugly rectangles to indicate direction.
+Surprisingly, `networkx`—the most popular Python package for network analysis—didn’t render proper arrows when drawing directed graphs. Instead, it used rectangular markers to indicate edge direction.
 
-Networkx is a package that I use regularly, and I wanted to contribute to the open source community
-that had given me so much, so I decided to implement the arrows.
+As a regular user, I wanted to fix this and contribute back to the open-source community.
 
-Before, a network would look like this:
+## The contribution
 
-{{< figure src="/images/old_networkx.png" caption="Figure 1: Example of an old directed network." >}}
+The workflow was straightforward:
 
+1. I opened an [issue](https://github.com/networkx/networkx/issues/2757) on the networkx GitHub repo
+2. After the maintainers confirmed it was worth pursuing, I submitted a [pull request](https://github.com/networkx/networkx/pull/2760)
+3. After some review and discussion, the code was merged
 
-## Arrows in networkx {#arrows-in-networkx}
+**Before:**
 
-The flow I used for my contribution was the following:
+{{< figure src="/images/old_networkx.png" caption="Figure 1: Directed network rendering before the fix." >}}
 
-1.  Open an [issue](https://github.com/networkx/networkx/issues/2757) on the networkx' github repo.
-2.  After I was told the issue was worth it, I created a [pull-request](https://github.com/networkx/networkx/pull/2760).
-3.  After some back and forth discussion, they pulled my code!
+**After:**
 
-Now, a directed network looks like this:
+{{< figure src="/images/new_networkx.png" caption="Figure 2: Directed network rendering with proper arrows." >}}
 
-{{< figure src="/images/new_networkx.png" caption="Figure 2: Example of an actual directed network." >}}
-
-This contribution really made me learn a lot about the code behind the drawings of networkx, but
-also about `matplotlib`. I think that contributing to a project is a great idea to learn how to code
-better and to give something to the community.
+Working on this contribution taught me a lot about the internals of `networkx`’s drawing code and `matplotlib` more broadly. Contributing to an open-source project is one of the best ways to improve as a programmer.

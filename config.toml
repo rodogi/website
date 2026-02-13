@@ -30,6 +30,16 @@ theme = "codex"
   weight = 2
 
   [[menu.main]]
-  name = "CV"
-  url = "/resume/resume.pdf"
+  name = "Teaching"
+  url = "/teaching"
   weight = 3
+
+  [[menu.main]]
+  name = "Blog"
+  url = "/post"
+  weight = 4
+
+  [[menu.main]]
+  name = "CV"
+  url = "/cv"
+  weight = 5

@@ -1,13 +1,19 @@
 ---
-title: "The venue effect"
-description: "The effect of high-impact venues in creative careers"
+title: "The Venue Effect"
+description: "How access to high-prestige venues unevenly shapes creative careers in science and art."
 tags: ["Social", "Venue effect", "Difference in difference"]
 date: 2024-01-15
-image: "/images/effect_career.png"  # Add your image here
+image: "/images/effect_career.png"
 ---
 
-This project investigates the "venue effect," a phenomenon where high-prestige publication or exhibition platforms significantly shape creative careers. By reconstructing the professional journeys of thousands of scientists and artists, we reveal how prominent venues influence future opportunities and recognition. We find that, while top venues amplify the careers of those granted access, they also reinforce existing inequalities, with benefits unevenly distributed across gender, geography, and career stage.
+Prominent venues—top journals in science, major biennials in art—act as gatekeepers that shape career trajectories. But who actually benefits from gaining access to these platforms? In this work, we reconstruct the full careers of 3.4 million scientists across physics, chemistry, biology, and sociology, alongside visual and performing artists, to quantify the causal impact of venue access on downstream career outcomes.
 
-Using large datasets and advanced statistical methods, we quantify this venue effect in both science and art. In science, top journals boost citations and productivity, particularly for mid-career and senior researchers. In the arts, prestigious biennials and exhibitions increase opportunities, especially for early-career artists, offering them greater visibility. This work provides a nuanced understanding of how selective access to prestigious venues shapes professional trajectories, highlighting the need for inclusive practices that can mitigate the reinforcement of these hierarchies.
+Using heterogeneous difference-in-differences analysis, we document a statistically significant and long-lasting venue effect in both science and the arts, and show that it is a relatively recent phenomenon—becoming a prominent force only after the 1990s. Critically, the benefits of venue access are neither universal nor equitable: they are modulated by career stage, gender, and geography.
+
+In science, the venue effect reinforces existing inequalities—disproportionately benefiting male, senior, and Western-affiliated researchers. In the visual and performing arts, however, venue access can partially mitigate gender disparities, offering early-career artists greater visibility. Geographically, prominent venues primarily benefit creators from regions with established traditions in their field, while the gains for those from less developed regions are often limited and not always sustained.
+
+These findings highlight a dual character: venue access can both amplify existing disparities and, under certain conditions, provide opportunities for underrepresented groups.
 
 ![Methodology](/images/intro_plot.png)
+
+Download the [pre-print (PDF)](/resume/venue-effect.pdf).

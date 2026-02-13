@@ -1,110 +1,59 @@
-+++
-title = "Create a network with Graph-tool and Pandas"
-author = ["Rodrigo Dorantes-Gilardi"]
-date = 2019-06-26T00:00:00-05:00
-draft = false
-+++
+---
+title: "Create a network with graph-tool and pandas"
+author: ["Rodrigo Dorantes-Gilardi"]
+date: 2019-06-26
+description: "A tutorial on building graph-tool networks from pandas DataFrames."
+---
 
-## Graph-tool {#graph-tool}
+## graph-tool
 
-Recently, I discovered the python package [graph-tool](https://graph-tool.skewed.de/) for network analysis. The advantage of
-`graph-tool` over the very popular `networkx` is the speed, as said by its creator:
+[graph-tool](https://graph-tool.skewed.de/) is a Python package for network analysis backed by C++ and the Boost Graph Library. Compared to the more popular `networkx`, it offers significantly better performance for large networks.
 
-<p class="verse">
-Contrary to most other python modules with similar functionality, the core data structures and<br />
-algorithms are implemented in C++, making extensive use of template metaprogramming, based heavily<br />
-on the Boost Graph Library. This confers it a level of performance that is comparable (both in<br />
-memory usage and computation time) to that of a pure C/C++ library.<br />
-<br />
-<br />
----Tiago Peixoto<br />
-</p>
+Some of its standout features:
 
-Some other really cool features (besides speed) of `graph-tool` are:
+- **Filters and views** for extracting subgraphs without copying data
+- **Interactive drawing** and beautiful graph layouts
+- **Fast topological algorithms**
 
--   Filters and views get subgraphs without creating a new python object
--   Interactive drawing
--   Beautiful layouts
--   Topological algorithms
+The main downside: documentation could use more worked examples—which is partly why I’m writing this.
 
-Cons:
+## Pandas + graph-tool
 
--   Could use more documentation examples.
+Network analysis often involves inspecting structural parameters (degree statistics, centrality) or working with node/edge attributes in tabular form. Pandas makes this natural.
 
-
-## Pandas + graph-tool {#pandas-plus-graph-tool}
-
-It is very convenient to analyze networks using tables to look at:
-
--   Structural parameters (e.g. degree: mean, std, max min)
--   Node and edge lists with attributes
-
-And even have the network in the form of an edge-list of the sort:
-
-<style>
-.my-table th,
-.my-table td {
-    padding: 20px;
-    text-align: left;
-}
-</style>
-
-<div class="ox-hugo-table my-table">
-<div></div>
-
-<div class="table-caption">
-  <span class="table-number">Table 1</span>:
-  Edge list
-</div>
+Suppose we have an edge list as a CSV:
 
 | node 1 | node 2 | color | weight |
 |--------|--------|-------|--------|
-| a      | b      | red   | 2      |
-| a      | c      | black | 5      |
-| b      | c      | red   | 1      |
+| a | b | red | 2 |
+| a | c | black | 5 |
+| b | c | red | 1 |
 
-</div>
-
-Where the first two column define the nodes within the edge and the rest of the columns are edge
-attributes (color and weight). Pandas is a python library for data analysis that focus on creating dataframes to work
-with tables. Here, we will be reading a table using pandas and converting it to a graph-tool `Graph`
-object.
+Here’s how to read it into a graph-tool `Graph` with edge properties:
 
 ```python
 import pandas as pd
 import graph_tool.all as gt
-import numpy as np
 
-# Load table
 df = pd.read_csv("table.csv")
 
 g = gt.Graph()
-# Set property maps for edge attributes
-weight = g.new_edge_property('int')
-color = g.new_edge_property('string')
+weight = g.new_edge_property("int")
+color = g.new_edge_property("string")
 
-# Create numpy array of edgelist
-edglist = df.values
-
-# Add edges
+edgelist = df.values
 node_id = g.add_edge_list(edgelist, hashed=True, eprops=[color, weight])
 
-# Access node id of each vertex
 for node in range(g.num_vertices()):
-    print("Node {} has id: {}".format(node, node_id[node]))
-
+    print(f"Node {node} has id: {node_id[node]}")
 ```
 
-Now we are ready to use the nice algorithms of graph-tool. Before saving your network, remember to
-also save the node ids or labels as an **internal vertex property map** of the graph:
+Before saving, register the properties as internal property maps so they persist:
 
 ```python
-g.vertex_properties['node_id'] = node_id
+g.vertex_properties["node_id"] = node_id
+g.edge_properties["color"] = color
+g.edge_properties["weight"] = weight
 
-# Same with edge properties `color` and `weight`
-g.edge_properties['color'] = color
-g.edge_properties['weight'] = weight
-
-# Save graph
-g.save('my_network.graphml')
+g.save("my_network.graphml")
 ```
